@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DLT Unit-01 - Questions</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+      color: #333;
+      font-size: 1rem;
+    }
+    header {
+      background-color: #0077cc;
+      color: white;
+      padding: 1rem 0.5rem;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+      page-break-after: always;
+    }
+    h2 {
+      color: #0077cc;
+      margin: 2rem 0 1rem;
+      font-size: 1.6rem;
+    }
+    h3 {
+      color: #444;
+      margin-top: 0.8rem;
+      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+    }
+    p {
+      margin: 0.5rem 0;
+    }
+    ul {
+      margin: 0.3rem 0 1rem 1rem;
+      padding-left: 1rem;
+    }
+    li>ul {
+      margin-top: 0.3rem;
+      margin-bottom: 0.6rem;
+      padding-left: 0.7rem;
+    }
+    li>ul>li {
+      margin-bottom: 0.4rem;
+    }
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 1rem auto;
+      border-radius: 6px;
+    }
+    @media (max-width: 768px) {
+      body {
+        font-size: 0.95rem;
+      }
+      header {
+        font-size: 1.3rem;
+        padding: 0.8rem 0.5rem;
+      }
+      .container {
+        padding: 0.9rem;
+        margin: 1.5rem auto;
+      }
+      h2 {
+        font-size: 1.3rem;
+        margin-top: 1.8rem;
+      }
+      h3 {
+        font-size: 1.1rem;
+        margin-top: 0.7rem;
+      }
+      ul {
+        margin-left: 0.5rem;
+        padding-left: 0.7rem;
+      }
+      li>ul {
+        margin-top: 0.2rem;
+        margin-bottom: 0.4rem;
+        padding-left: 0.5rem;
+      }
+      li>ul>li {
+        margin-bottom: 0.3rem;
+      }
+      ul li {
+        font-size: 0.95rem;
+        line-height: 1.3rem;
+      }
+    }
+    @media print {
+      .container {
+        page-break-after: always;
+      }
+    }
+    img {
+      display: block;
+      max-width: 55%;
+      height: auto;
+      max-height: 280px;
+      object-fit: contain;
+      margin: 1rem auto;
+      border-radius: 6px;
+    }
+    #lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease;
+      z-index: 1000;
+      backdrop-filter: blur(5px);
+    }
+    #lightbox.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    #lightbox img {
+      max-width: 80%;
+      max-height: 80%;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.3);
+      transform: scale(0.8);
+      transition: transform 0.3s ease;
+    }
+    #lightbox.active img {
+      transform: scale(1);
+      cursor: zoom-out;
+    }
+    #image-tip {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 119, 204, 0.95);
+      color: #fff;
+      padding: 0.8rem 1.2rem;
+      border-radius: 6px;
+      font-size: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.6s ease;
+    }
+    #image-tip.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    img:hover {
+      transform: scale(1.05);
+    }
+     /* Table base styles */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      background: transparent;
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 0.8rem;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background-color: #0077cc;
+      color: white;
+      font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    tr:hover {
+      background-color: #e6f0ff;
+    }
+
+    /* Make tables horizontally scrollable on small screens instead of restructuring into blocks.
+       This preserves semantics and improves readability. */
+    .table-responsive {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      width: 100%;
+    }
+
+    /* optional minimum width so complex tables remain readable on desktop and can scroll on mobile */
+    .table-responsive table {
+      min-width: 640px; /* adjust as needed */
+    }
+  </style>
+</head>
+<body>
+  <header>
+    DLT Unit-01
+  </header>
+  <div id="image-tip">💡 Click on any image for better visualizing!</div>
+  <div id="lightbox">
+    <img id="lightbox-img" src="" alt="Enlarged image">
+  </div>
+  <div class="container">
+    <h2>1) Is AI a science or engineering? Or neither or both? Explain AI</h2>
+    <ul>
+      <li>AI stands for Artificial Intelligence</li>
+      <li>The ability of machines to perform tasks without any human intervention is called as Artificial Intelligence</li>
+      <li>AI is both a science and an engineering</li>
+    </ul>
+<table border="1" cellpadding="8">
+  <tr>
+    <th>AI as a Science</th>
+    <th>AI as an Engineering</th>
+  </tr>
+
+  <tr>
+    <td>The main goal is to understand the intelligence</td>
+    <td>The main goal is to build intelligent machines</td>
+  </tr>
+
+  <tr>
+    <td>It explains the intelligence </td>
+    <td>It uses intelligence to solve real-world problems</td>
+  </tr>
+
+  <tr>
+    <td>It uses theories to learn the model </td>
+    <td>It Uses algorithms to solve the problems</td>
+  </tr>
+
+  <tr>
+    <td>Example: NLP (Natural Language Processing)</td>
+    <td>Example: Self-Driving Cars</td>
+  </tr>
+  <tr>
+    <td><img src="WhatsApp Image 2025-11-29 at 00.01.21_cbeee509.jpg" alt="AI as a Science"/></td>
+    <td><img src="WhatsApp Image 2025-11-29 at 00.01.37_26963e1c.jpg" alt="AI as a Engineering"/> </td>
+  </tr>
+</table>
+
+  </div>
+  <header>
+    DLT Unit-01
+  </header>
+  <div class="container">
+    <h2>2) Present and Future Scope of AI</h2>
+    <h3>Present Scope of AI:</h3>
+    <ul>
+      <li><strong>Everywhere:</strong>
+        <ul>
+          <li>AI is used everywhere, from education to finance</li>
+        </ul>
+      </li>
+      <li><strong>Education:</strong>
+        <ul>
+          <li>AI explains topics to the students, and teaches them to solve the problems</li>
+        </ul>
+      </li>
+      <li><strong>Entertainment:</strong>
+        <ul>
+          <li>Popular companies like Netflix, YouTube use AI to provide extra features</li>
+        </ul>
+      </li>
+      <li><strong>Finance:</strong>
+        <ul>
+          <li>AI is used in Finance for managing money and stock recommendations</li>
+        </ul>
+      </li>
+    </ul>
+    <h3>Future Scope of AI:</h3>
+    <ul>
+      <li><strong>Self-driving cars:</strong>
+        <ul>
+          <li>Moving the car without any human effort</li>
+        </ul>
+      </li>
+      <li><strong>General AI:</strong>
+        <ul>
+          <li>General AI is a type of AI that solves many different problems</li>
+        </ul>
+      </li>
+      <li><strong>Quantum AI:</strong>
+        <ul>
+          <li>It uses Quantum Computers to solve the problems quickly</li>
+        </ul>
+      </li>
+      <li><strong>Robotics:</strong>
+        <ul>
+          <li>It is about making robots to solve the complex problems</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <header>
+    DLT Unit-01
+  </header>
+  <div class="container">
+    <h2>3) History of AI</h2>
+    <img src="WhatsApp Image 2025-11-29 at 00.17.51_b403d1e3.jpg" alt="History of AI"/>
+    <h3>a) Beginning of AI - (1950):</h3>
+    <ul>
+      <li>In 1950, people questioned themselves, "Will machines think like humans?"</li>
+      <li>Can machines learn?</li>
+      <li>Can they solve the problems?</li>
+    </ul>
+    <h3>b) Symbolic AI - (1960-1970):</h3>
+    <ul>
+      <li>Developers manually wrote the rules in the code</li>
+      <li>It is a rule-based approach</li>
+    </ul>
+    <h3>c) Limitations of Symbolic AI - (1980):</h3>
+    <ul>
+      <li>Symbolic AI has failed</li>
+      <li>They shifted from a rule-based approach to a learning-based approach</li>
+    </ul>
+    <h3>d) Machine Learning - (1990-2010):</h3>
+    <ul>
+      <li>No need for developers to write the rules in the code</li>
+      <li>It automatically learns the pattern</li>
+    </ul>
+    <h3>e) Deep Learning - (present):</h3>
+    <ul>
+      <li>It uses a neural network to solve the complex problems</li>
+    </ul>
+  </div>
+  <header>
+    DLT Unit-01
+  </header>
+  <div class="container">
+    <h2>4) Kernel Method</h2>
+    <ul>
+      <li>Kernel Method is used for solving classification problems</li>
+      <li>The most well-known kernel method is SVM(Support Vector Machine)</li>
+      <li>The Main goal of the kernel method is to find the decision boundary</li>
+    </ul>
+    <h3>Decision Boundary:</h3>
+    <ul>
+      <li>It is a line or surface that divides the data into two categories</li>
+      <img src="WhatsApp Image 2025-11-29 at 00.23.43_cf23c70a.jpg" alt="Kernel Method"/>
+    </ul>
+    <h3>How does it work?</h3>
+    <ul>
+      <li>i)kernel Function:
+        <ul>
+          <li>kernel function is used to transform the data into high-dimensional data</li>
+        </ul>
+      </li>
+      <li>ii)Kernel trick:
+        <ul>
+          <li>Kernel trick is used for non-linear separation of data</li>
+        </ul>
+      </li>
+      <li>iii)Decision boundary:
+        <ul>
+          <li>The decision boundary is also called a hyperplane</li>
+          <li>Finally, it finds the hyperplane that divides the data into two categories</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <header>
+    DLT Unit-01
+  </header>
+  <div class="container">
+    <h2>5) Probabilistic Modelling</h2>
+    <ul>
+      <li>Probabilistic Modelling uses probability and statistical methods to predict and understand the data</li>
+    </ul>
+    <h3>Key Concepts:</h3>
+    <ul>
+      <li>i)Bayes Theorem:
+        <ul>
+          <li>Bayes theorem is a mathematical formula used in probability and statistics</li>
+          <img src="Screenshot 2025-11-29 002625.png" alt="Bayes Theorem"/>
+        </ul>
+      </li>
+      <li>ii)Naive Bayes Classifier:
+        <ul>
+          <li>Naive Bayes Classifier is based on the supervised learning technique</li>
+          <li>It is used for solving both classification and regression problems</li>
+          <li>Naive Bayes classifier uses Bayes theorem to find the probability</li>
+        </ul>
+      </li>
+      <li>iii)Logistic Regression:
+        <ul>
+          <li>Logistic Regression is based on the supervised learning technique</li>
+          <li>It is used for solving both classification and regression problems</li>
+          <li>Logistic Regression uses sigmoid functions to find the probability</li>
+          <img src="Screenshot 2025-11-29 002953.png" alt="Logistic Regression"/>
+        </ul>
+      </li>
+    </ul>
+    <h3>Types of Probabilistic Modelling:</h3>
+    <ul>
+      <li>There are mainly three types. They are:
+        <ul>
+          <li>a)Generative Model</li>
+          <li>b)Discriminative Models</li>
+          <li>c)Graphical Models</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <header>
+    DLT Unit-01
+  </header>
+  <div class="container">
+    <h2>6) Role of AI in NLP</h2>
+    <ul>
+      <li>NLP stands for Natural Language Processing</li>
+    </ul>
+    <ul>
+      <li>i)Understanding text:
+        <ul>
+          <li>AI reads the text and understands its meaning</li>
+        </ul>
+      </li>
+      <li>ii)Understanding speech:
+        <ul>
+          <li>AI listens to the speech and understands its meaning</li>
+        </ul>
+      </li>
+      <li>iii)Responds:
+        <ul>
+          <li>AI responds to the text and speech</li>
+        </ul>
+      </li>
+      <li>iv)Speech Recognition:
+        <ul>
+          <li>AI recognizes the speech and converts it into text format</li>
+        </ul>
+      </li>
+      <li>v)Language Translation:
+        <ul>
+          <li>AI converts from one language to another language</li>
+          <li>Example:
+            <ul>
+              <li>Google Translate: English to Telugu</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h3>Example:</h3>
+    <ul>
+      <li>i)AI Chatbots:
+        <ul>
+          <li>ChatGPT</li>
+          <li>perplexity</li>
+        </ul>
+      </li>
+      <li>ii)Voice Assistants:
+        <ul>
+          <li>Siri</li>
+          <li>Alexa</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <header>
+    DLT Unit-01
+  </header>
+  <div class="container">
+    <h2>7) state, state space, search tree, Search node</h2>
+    <h3>State:</h3>
+    <ul>
+      <li>State is the situation at a particular moment or time</li>
+    </ul>
+    <h3>State space:</h3>
+    <ul>
+      <li>State space is the collection of all states</li>
+      <li>It includes:
+        <ul>
+          <li>Initial State</li>
+          <li>Intermediate State</li>
+          <li>Goal State</li>
+        </ul>
+      </li>
+    </ul>
+    <h3>Search tree:</h3>
+    <ul>
+      <li>Search tree is the tree representation of the state space</li>
+      <li>Each node in a tree is a state
+        <ul>
+          <li>a)root node -> Initial State</li>
+          <li>b)Intermediate node -> Intermediate state</li>
+          <li>c)leaves node -> Goal State</li>
+        </ul>
+      </li>
+    </ul>
+    <h3>Search node:</h3>
+    <ul>
+      <li>A single element in the Search tree is called a Search node</li>
+      <img src="WhatsApp Image 2025-11-29 at 00.35.47_015d85e8.jpg" alt="State Space Search"/>
+    </ul>
+  </div>
+  <header>
+    DLT Unit-01
+  </header>
+  <div class="container">
+    <h2>8) Overfitting vs Underfitting</h2>
+<table border="1" cellpadding="8">
+  <tr>
+    <th>Overfitting</th>
+    <th>Underfitting</th>
+  </tr>
+
+  <tr>
+    <td>Model learns the training data</td>
+    <td>It fails to learn the patterns</td>
+  </tr>
+
+  <tr>
+    <td>Model memorizes the training data</td>
+    <td>It doesn't memorize the training data</td>
+  </tr>
+
+  <tr>
+    <td>It is very complex</td>
+    <td>It is very simple</td>
+  </tr>
+
+  <tr>
+    <td>It shows strong performance on training data</td>
+    <td>It shows weak performance on training data</td>
+  </tr>
+
+  <tr>
+    <td>It shows weak performance on testing data</td>
+    <td>It shows weak performance on testing data</td>
+  </tr>
+
+  <tr>
+    <td>Low Bias and High Variance</td>
+    <td>High Bias and Low Variance</td>
+  </tr>
+
+  <tr>
+    <td>Example: Cancer Detection</td>
+    <td>Example: House Price Prediction</td>
+  </tr>
+
+<tr>
+    <td><img src="WhatsApp Image 2025-11-29 at 00.40.54_23b2d72c.jpg" alt="Overfitting"/></td>
+    <td><img src="WhatsApp Image 2025-11-29 at 00.40.36_aa088a54.jpg" alt="Underfitting"/></td>
+  </tr>
+</table>
+
+  </div>
+  <header>
+    DLT Unit-01
+  </header>
+  <div class="container">
+    <h2>9) Decision Tree</h2>
+    <ul>
+      <li>A Decision Tree is based on the Supervised Learning Technique</li>
+      <li>It is used for solving both classification and Regression Problems</li>
+      <li>A Decision Tree Consists of a Root Node, a Decision Node and a Leaf Node</li>
+      <img src="Screenshot 2025-11-29 000605.png" alt="Decision Tree"/>
+    </ul>
+    <h3>Root Node:</h3>
+    <ul>
+      <li>Starting Node</li>
+    </ul>
+    <h3>Decision Node:</h3>
+    <ul>
+      <li>Make Decisions</li>
+    </ul>
+    <h3>Leaf Node:</h3>
+    <ul>
+      <li>Final Output</li>
+    </ul>
+    <h3>How does it work?</h3>
+    <ul>
+      <li>It splits the data based on the key features</li>
+      <li>It continues splitting and forms branches</li>
+      <li>It stops splitting until it reaches the final decision</li>
+      <img src="Screenshot 2025-11-29 000705.png" alt="Decision Tree"/>
+    </ul>
+  </div>
+  <header>
+    DLT Unit-01
+  </header>
+  <div class="container">
+    <h2>10) Random Forest</h2>
+    <ul>
+      <li>Random Forest is based on the Supervised Learning Technique</li>
+      <li>It is used for solving both classification and Regression Problems</li>
+      <li>Random Forest combines multiple decision trees to predict the class of the dataset</li>
+            <img src="Screenshot 2025-11-29 000640.png" alt="Random Forest"/>
+    </ul>
+    <ul>
+      <li>Random Forest = Multiple Decision Trees + Ensembling</li>
+    </ul>
+    <h3>Ensembling:</h3>
+    <ul>
+      <li>It combines multiple outputs for better prediction</li>
+      <li>Because of this Ensemble Approach:
+        <ul>
+          <li>Random Forest reduces the overfitting</li>
+          <li>Improves accuracy</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <header>
+    DLT Unit-01
+  </header>
+  <div class="container">
+    <h2>11) Random Forest by using Unsupervised Learning</h2>
+    <ul>
+      <li>Random Forest is mainly based on the Supervised Learning Technique</li>
+      <li>Random Forest works with an Unsupervised Learning Technique by using a proximity matrix</li>
+      <li>The proximity matrix is also called as similarity matrix</li>
+    </ul>
+    <h3>Steps:</h3>
+    <ul>
+      <li>i)Real and Synthetic data:
+        <ul>
+          <li>Label Real data as 1</li>
+          <li>Label Synthetic data as 0</li>
+        </ul>
+      </li>
+      <li>ii)Random Forest</li>
+      <img src="WhatsApp Image 2025-11-29 at 00.50.35_5eb640fa.jpg" alt="Random Forest"/>
+      <li>iii)Proximity Matrix</li>
+      <img src="WhatsApp Image 2025-11-29 at 00.52.48_bd8fef0c.jpg" alt="Proximity Matrix"/>
+      <li>iv)Clustering</li>
+      <img src="WhatsApp Image 2025-11-29 at 00.54.59_4744cabf.jpg" alt="Clustering"/>
+    </ul>
+  </div>
+  <header>
+    DLT Unit-01
+  </header>
+  <div class="container">
+    <h2>12) Gradient Boosting</h2>
+    <ul>
+      <li>Gradient Boosting is an Expansion of the Boosting Procedure</li>
+      <li>Gradient Boosting = Gradient Descent + Boosting</li>
+    </ul>
+    <h3>Boosting:</h3>
+    <ul>
+      <li>Boosting is based on the Ensemble Machine Learning Techniques</li>
+      <li>Boosting trains the decision trees sequentially and corrects the errors</li>
+      <img src="WhatsApp Image 2025-11-29 at 01.00.42_7308c592.jpg" alt="Gradient Boosting"/>
+    </ul>
+    <h3>Performance of Gradient Boosting:</h3>
+    <ul>
+      <li>i)Increase trees:
+        <ul>
+          <li>Increase the number of trees to give accurate predictions</li>
+        </ul>
+      </li>
+      <li>ii)Reduce tree depth:
+        <ul>
+          <li>Decrease the tree depth to avoid overfitting</li>
+        </ul>
+      </li>
+      <li>iii)Reduce Learning Rate:
+        <ul>
+          <li>Reducing the Learning Rate means the model learns slowly</li>
+          <li>It gives accurate predictions</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <script>
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    document.querySelectorAll("img").forEach(img => {
+      img.addEventListener("click", () => {
+        lightboxImg.src = img.src;
+        lightbox.classList.add("active");
+      });
+    });
+    lightbox.addEventListener("click", () => {
+      lightbox.classList.remove("active");
+    });
+  </script>
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      const tip = document.getElementById("image-tip");
+      tip.classList.add("show");
+      setTimeout(() => {
+        tip.classList.remove("show");
+      },5000);
+    });
+  </script>
+</body>
+</html>
